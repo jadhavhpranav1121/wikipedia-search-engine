@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wikipedia-search-engine
+  cache:
+    type: caffeine
+
+search:
+  dump-path: /path/to/wiki.xml.bz2
+  indexing:
+    batch-size: 1000
+    thread-count: 4
+  cache:
+    ttl-minutes: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.example.searchengine: DEBUG
+    root: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
